@@ -65,8 +65,6 @@ const scaffoldConfig = {
   walletAutoConnect: true,
 } as const satisfies ScaffoldConfig;
 
-scaffoldConfig.targetNetworks[0].rpcUrls = ;
-
 console.log(JSON.stringify(scaffoldConfig.targetNetworks[0], null, 4))
 
 export default scaffoldConfig;
