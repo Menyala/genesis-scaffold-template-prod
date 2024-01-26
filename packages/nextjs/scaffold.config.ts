@@ -1,7 +1,5 @@
-// import * as chains from "viem/chains";
 
-import * as all from "viem/chains";
-const { defineChain: _, ...chains } = all;
+import { defineChain } from 'viem' 
 
 export type ScaffoldConfig = {
   targetNetworks: readonly chains.Chain[];
