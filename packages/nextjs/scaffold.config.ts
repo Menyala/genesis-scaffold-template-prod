@@ -40,4 +40,17 @@ const scaffoldConfig = {
   walletAutoConnect: true,
 } as const satisfies ScaffoldConfig;
 
+scaffoldConfig.targetNetworks[0].rpcUrls = {
+    "default": {
+            "http": [
+                    process.env.NEXT_PUBLIC_RPC_URL
+            ]
+        },
+        "public": {
+            "http": [
+                process.env.NEXT_PUBLIC_RPC_URL
+            ]
+        }
+};
+
 export default scaffoldConfig;
