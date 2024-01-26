@@ -12,29 +12,29 @@ export type ScaffoldConfig = {
 
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  targetNetworks: [
-        defineChain({
-          id: 31_337,
-          name: 'Hardhat',
-          nativeCurrency: {
-            decimals: 18,
-            name: 'Ether',
-            symbol: 'ETH',
-          },
-          rpcUrls: {
-                "default": {
-                        "http": [
-                                process.env.NEXT_PUBLIC_RPC_URL
-                        ]
-                    },
-                "public": {
-                    "http": [
-                        process.env.NEXT_PUBLIC_RPC_URL
-                    ]
-                }
-            }
-        })
-  ],
+  targetNetworks: [chains.hardhat],
+
+        // defineChain({
+        //   id: 31_337,
+        //   name: 'Hardhat',
+        //   nativeCurrency: {
+        //     decimals: 18,
+        //     name: 'Ether',
+        //     symbol: 'ETH',
+        //   },
+        //   rpcUrls: {
+        //         "default": {
+        //                 "http": [
+        //                         process.env.NEXT_PUBLIC_RPC_URL
+        //                 ]
+        //             },
+        //         "public": {
+        //             "http": [
+        //                 process.env.NEXT_PUBLIC_RPC_URL
+        //             ]
+        //         }
+        //     }
+        // })
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)
@@ -62,6 +62,19 @@ const scaffoldConfig = {
    */
   walletAutoConnect: true,
 } as const satisfies ScaffoldConfig;
+
+scaffoldConfig.targetNetworks[0].rpcUrls = {
+    "default": {
+            "http": [
+                    process.env.NEXT_PUBLIC_RPC_URL
+            ]
+        },
+        "public": {
+            "http": [
+                process.env.NEXT_PUBLIC_RPC_URL
+            ]
+        }
+};
 
 console.log(JSON.stringify(scaffoldConfig.targetNetworks[0], null, 4))
 
