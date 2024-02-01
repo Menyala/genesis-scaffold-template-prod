@@ -30,8 +30,8 @@ contract YourContract {
 
 	// Constructor: Called once on contract deployment
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
-	constructor(address _owner) {
-		owner = _owner;
+	constructor() {
+		owner = msg.sender;
 	}
 
 	// Modifier: used to define a set of rules that must be met before or after a function is executed
