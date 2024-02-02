@@ -62,7 +62,7 @@ const scaffoldConfig = {
   walletAutoConnect: true,
 } as const satisfies ScaffoldConfig;
 
-scaffoldConfig.targetNetworks[0].rpcUrls = {
+Object.assign(scaffoldConfig.targetNetworks[0].rpcUrls, {
     "default": {
             "http": [
                     process.env.NEXT_PUBLIC_RPC_URL
@@ -73,7 +73,7 @@ scaffoldConfig.targetNetworks[0].rpcUrls = {
                 process.env.NEXT_PUBLIC_RPC_URL
             ]
         }
-};
+});
 
 console.log(JSON.stringify(scaffoldConfig.targetNetworks[0], null, 4))
 
