@@ -17,7 +17,7 @@ const BLOCKS_PER_PAGE = 20;
 export const testClient = createTestClient({
   chain: hardhat,
   mode: "hardhat",
-  transport: webSocket(`${process.env.NEXT_PUBLIC_RPC_URL}`),
+  transport: webSocket(`${process.env.NEXT_PUBLIC_RPC_WS_URL}`),
 })
   .extend(publicActions)
   .extend(walletActions);
