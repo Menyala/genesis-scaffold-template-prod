@@ -40,8 +40,6 @@ const scaffoldConfig = {
   walletAutoConnect: true,
 } as const satisfies ScaffoldConfig;
 
-console.log(chains[process.env.DEFAULT_NETWORK]);
-
 Object.assign(scaffoldConfig.targetNetworks[0].rpcUrls, {
     "default": {
             "http": [
