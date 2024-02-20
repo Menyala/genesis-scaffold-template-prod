@@ -7,8 +7,6 @@ import { usePathname } from "next/navigation";
 import { Bars3Icon, BugAntIcon, ChartBarIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
-import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
-import { hardhat } from "viem/chains";
 
 type HeaderMenuLink = {
   label: string;
@@ -22,31 +20,17 @@ export let menuLinks: HeaderMenuLink[] = [
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
   },
-  {
-    label: "Explorer",
-    href: "/blockexplorer",
-    icon: <ChartBarIcon className="h-4 w-4" />,
-  },
 ];
 
 export const HeaderMenuLinks = () => {
   const pathname = usePathname();
-  const { targetNetwork } = useTargetNetwork();
-  const isLocalNetwork = targetNetwork.id === hardhat.id;
 
-  let blockExplorerLink = "/blockexplorer";
-  if(!isLocalNetwork){
-    blockExplorerLink = targetNetwork.blockExplorers.default ? targetNetwork.blockExplorers.default.url : null;
-  }
-
-  menuLinks[1].href = blockExplorerLink;
-  
   return (
     <>
       {menuLinks.map(({ label, href, icon }) => {
         const isActive = pathname === href;
         return (
-          <li hidden={!href} key={label}>
+          <li key={label}>
             <Link
               href={href}
               passHref
