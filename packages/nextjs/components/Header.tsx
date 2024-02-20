@@ -14,16 +14,11 @@ type HeaderMenuLink = {
   icon?: React.ReactNode;
 };
 
-export const menuLinks: HeaderMenuLink[] = [
+export let menuLinks: HeaderMenuLink[] = [
   {
     label: "Debug Contracts",
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
-  },
-  {
-    label: "Explorer",
-    href: "/blockexplorer",
-    icon: <ChartBarIcon className="h-4 w-4" />,
   },
 ];
 
@@ -35,7 +30,7 @@ export const HeaderMenuLinks = () => {
       {menuLinks.map(({ label, href, icon }) => {
         const isActive = pathname === href;
         return (
-          <li key={href}>
+          <li key={label}>
             <Link
               href={href}
               passHref

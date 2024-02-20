@@ -30,7 +30,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: process.env.DEFAULT_NETWORK || "localhost",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -51,11 +51,13 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     sepolia: {
-      url: `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
+      //url: `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
+      url: process.env.RPC_URL || `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
     },
     goerli: {
-      url: `https://eth-goerli.alchemyapi.io/v2/${providerApiKey}`,
+      //url: `https://eth-goerli.alchemyapi.io/v2/${providerApiKey}`,
+      url: process.env.RPC_URL || `https://eth-goerli.alchemyapi.io/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
     },
     arbitrum: {
@@ -79,7 +81,8 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     polygonMumbai: {
-      url: `https://polygon-mumbai.g.alchemy.com/v2/${providerApiKey}`,
+      //url: `https://polygon-mumbai.g.alchemy.com/v2/${providerApiKey}`,
+      url: process.env.RPC_URL || `https://polygon-mumbai.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
     },
     polygonZkEvm: {
@@ -104,6 +107,11 @@ const config: HardhatUserConfig = {
     },
     baseGoerli: {
       url: "https://goerli.base.org",
+      accounts: [deployerPrivateKey],
+    },
+    baseSepolia: {
+      //url: "https://sepolia.base.org",
+      url: process.env.RPC_URL || "https://sepolia.base.org",
       accounts: [deployerPrivateKey],
     },
     scrollSepolia: {
