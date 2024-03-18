@@ -130,6 +130,10 @@ const config: HardhatUserConfig = {
       url: "https://sepolia.publicgoods.network",
       accounts: [deployerPrivateKey],
     },
+    lineaTestnet: {
+      url: process.env.RPC_URL || "https://rpc.goerli.linea.build",
+      accounts: [deployerPrivateKey],
+    },
   },
   // configuration for harhdat-verify plugin
   etherscan: {
