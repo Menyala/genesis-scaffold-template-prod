@@ -10,7 +10,9 @@ const deployAllContracts: DeployFunction = async function (hre: HardhatRuntimeEn
 
   // Load constructor arguments from JSON file
   const constructorFilePath = path.join(__dirname, "..", "constructor.json");
-  const constructorArgs = JSON.parse(fs.readFileSync(constructorFilePath, "utf-8"));
+  let constructorFileContent = fs.readFileSync(constructorFilePath, "utf-8");
+  constructorFileContent = constructorFileContent.replace(/_DEPLOYER_ADDRESS_/g, deployer);
+  const constructorArgs = JSON.parse(constructorFileContent);
 
   // Get all contract files in the contracts directory
   const contractsDir = path.join(__dirname, "..", "contracts");
