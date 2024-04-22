@@ -23,10 +23,11 @@ const deployAllContracts: DeployFunction = async function (hre: HardhatRuntimeEn
 
     // Retrieve constructor arguments for the contract, if any
     const args = constructorArgs[contractName] || [];
+    const extractedArgs = args.length > 0 ? args.map((arg: any) => arg.value) : args;
 
     await deploy(contractName, {
       from: deployer,
-      args: args,
+      args: extractedArgs,
       log: true,
       autoMine: true,
     });
