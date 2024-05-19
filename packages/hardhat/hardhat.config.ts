@@ -131,7 +131,23 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     lineaTestnet: {
-      url: process.env.RPC_URL || "https://rpc.goerli.linea.build",
+      url: process.env.RPC_URL || "http://linea-sepolia.blockpi.network/v1/rpc/public",
+      accounts: [deployerPrivateKey],
+    },
+    polygonAmoy: {
+      url: process.env.RPC_URL || "https://rpc-amoy.polygon.technology",
+      accounts: [deployerPrivateKey],
+    },
+    opbnbTestnet: {
+      url: process.env.RPC_URL || "https://opbnb-testnet-rpc.bnbchain.org",
+      accounts: [deployerPrivateKey],
+    },
+    bnbTestnet: {
+      url: process.env.RPC_URL || "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+      accounts: [deployerPrivateKey],
+    },
+    moonbaseAlpha: {
+      url: process.env.RPC_URL || "https://rpc.api.moonbase.moonbeam.network",
       accounts: [deployerPrivateKey],
     },
   },
