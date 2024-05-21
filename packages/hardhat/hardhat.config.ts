@@ -150,6 +150,10 @@ const config: HardhatUserConfig = {
       url: process.env.RPC_URL || "https://rpc.api.moonbase.moonbeam.network",
       accounts: [deployerPrivateKey],
     },
+    berachainTestnet: {
+      url: process.env.RPC_URL || "https://artio.rpc.berachain.com",
+      accounts: [deployerPrivateKey],
+    },
   },
   // configuration for harhdat-verify plugin
   etherscan: {
