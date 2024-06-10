@@ -1,17 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InheritanceTooltip } from "./InheritanceTooltip";
 import { Abi, AbiFunction } from "abitype";
 import { Address } from "viem";
-import { useContractRead } from "wagmi";
+import { useReadContract } from "wagmi";
 import {
   ContractInput,
   displayTxResult,
   getFunctionInputKey,
   getInitialFormState,
   getParsedContractFunctionArgs,
+  transformAbiFunction,
 } from "~~/app/debug/_components/contract";
+import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getParsedError, notification } from "~~/utils/scaffold-eth";
 
 type ReadOnlyFunctionFormProps = {
@@ -29,20 +31,29 @@ export const ReadOnlyFunctionForm = ({
 }: ReadOnlyFunctionFormProps) => {
   const [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction));
   const [result, setResult] = useState<unknown>();
+  const { targetNetwork } = useTargetNetwork();
 
-  const { isFetching, refetch } = useContractRead({
+  const { isFetching, refetch, error } = useReadContract({
     address: contractAddress,
     functionName: abiFunction.name,
     abi: abi,
     args: getParsedContractFunctionArgs(form),
-    enabled: false,
-    onError: (error: any) => {
-      const parsedErrror = getParsedError(error);
-      notification.error(parsedErrror);
+    chainId: targetNetwork.id,
+    query: {
+      enabled: false,
+      retry: false,
     },
   });
 
-  const inputElements = abiFunction.inputs.map((input, inputIndex) => {
+  useEffect(() => {
+    if (error) {
+      const parsedError = getParsedError(error);
+      notification.error(parsedError);
+    }
+  }, [error]);
+
+  const transformedFunction = transformAbiFunction(abiFunction);
+  const inputElements = transformedFunction.inputs.map((input, inputIndex) => {
     const key = getFunctionInputKey(abiFunction.name, input, inputIndex);
     return (
       <ContractInput
