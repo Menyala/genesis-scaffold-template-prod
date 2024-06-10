@@ -134,6 +134,10 @@ const config: HardhatUserConfig = {
       url: process.env.RPC_URL || "http://linea-sepolia.blockpi.network/v1/rpc/public",
       accounts: [deployerPrivateKey],
     },
+    lineaSepolia: {
+      url: process.env.RPC_URL || "https://linea-sepolia.blockpi.network/v1/rpc/public",
+      accounts: [deployerPrivateKey],
+    },
     polygonAmoy: {
       url: process.env.RPC_URL || "https://rpc-amoy.polygon.technology",
       accounts: [deployerPrivateKey],
@@ -142,7 +146,7 @@ const config: HardhatUserConfig = {
       url: process.env.RPC_URL || "https://opbnb-testnet-rpc.bnbchain.org",
       accounts: [deployerPrivateKey],
     },
-    bnbTestnet: {
+    bscTestnet: {
       url: process.env.RPC_URL || "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
       accounts: [deployerPrivateKey],
     },
