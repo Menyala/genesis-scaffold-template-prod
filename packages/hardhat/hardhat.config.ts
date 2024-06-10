@@ -142,7 +142,7 @@ const config: HardhatUserConfig = {
       url: process.env.RPC_URL || "https://rpc-amoy.polygon.technology",
       accounts: [deployerPrivateKey],
     },
-    opbnbTestnet: {
+    opBNBTestnet: {
       url: process.env.RPC_URL || "https://opbnb-testnet-rpc.bnbchain.org",
       accounts: [deployerPrivateKey],
     },
