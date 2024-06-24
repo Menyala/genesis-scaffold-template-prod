@@ -158,6 +158,14 @@ const config: HardhatUserConfig = {
       url: process.env.RPC_URL || "https://artio.rpc.berachain.com",
       accounts: [deployerPrivateKey],
     },
+    berachainV2Testnet: {
+      url: process.env.RPC_URL || "https://bartio.rpc.berachain.com",
+      accounts: [deployerPrivateKey],
+    },
+    auroraTestnet: {
+      url: process.env.RPC_URL || "https://testnet.aurora.dev",
+      accounts: [deployerPrivateKey],
+    },
   },
   // configuration for harhdat-verify plugin
   etherscan: {
