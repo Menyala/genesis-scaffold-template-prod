@@ -158,7 +158,7 @@ const config: HardhatUserConfig = {
       url: process.env.RPC_URL || "https://artio.rpc.berachain.com",
       accounts: [deployerPrivateKey],
     },
-    berachainV2Testnet: {
+    berachainTestnetbArtio: {
       url: process.env.RPC_URL || "https://bartio.rpc.berachain.com",
       accounts: [deployerPrivateKey],
     },
